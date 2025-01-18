@@ -22,7 +22,7 @@ export default function DemoModeButton({ className, iconClassname }) {
   const { data: session } = useSession();
   const shouldConnect = session && !activeAccount;
   const { authProviders, login, connect } = useAuth();
-  const [email, setEmail] = useState("belin082595@gmail.com");
+  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
