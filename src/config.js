@@ -1,7 +1,7 @@
 export const TWITTER_LINK = "";
 export const INSTA_LINK = "";
 
-export const MINT_APP_LINK = "http://localhost:3000/tier-one";
+export const MINT_APP_LINK = "https://propex-frontend.vercel.app/tier-one";
 // export const MINT_APP_LINK = "https://mint.propex.app";
 
 export const MINT_APP_HOSTNAME = "mint.propex.app";
