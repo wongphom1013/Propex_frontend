@@ -1,0 +1,2 @@
+export const GOOGLE_SHEETS_SCRIPTS =
+  process.env.NEXT_PUBLIC_GOOGLE_SHEETS_SCRIPTS;

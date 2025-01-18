@@ -1,0 +1,9 @@
+/* custom-datepicker.css */
+
+.custom-datepicker-popper .react-datepicker__day--selected {
+  @apply bg-mossgreen text-lemongrass; /* Tailwind classes for selected date background */
+}
+
+.custom-datepicker-popper .react-datepicker__day--selected:hover {
+  @apply bg-lemongrass text-black;
+}

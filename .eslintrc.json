@@ -1,0 +1,13 @@
+{
+  // "extends": ["next/core-web-vitals", "eslint:recommended", "next/babel"],
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "react/no-unescaped-entities": "off",
+    "no-undef": "error",
+    "no-useless-catch": "warn"
+  },
+  "env": {
+    "es6": true
+  }
+}
