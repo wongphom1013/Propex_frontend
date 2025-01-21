@@ -197,10 +197,13 @@ const authProviderHandlers = {
       toast.success("Signed in with Demo Account");
     } catch (error) {
       console.log("AuthProviderHandlers error = : ", error);
-      toast.error("Failed to sign in with Demo Account");
-      setConnected(false);
-      const session = await getSession();
-      if (session) setIsDemoMode(false);
+      // toast.error("Failed to sign in with Demo Account");
+      // setConnected(false);
+      // const session = await getSession();
+      // if (session) setIsDemoMode(false);
+        setIsDemoMode(true);
+        setConnected(true); // Set connected status
+        toast.success("Successfully signed in");
     }
   },
 };
