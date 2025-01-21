@@ -137,6 +137,29 @@ const authProviderHandlers = {
       setConnected(true); 
     } finally {
       console.log("here???");
+
+      const { data } = await propexAPI.get(
+        `/user?address=${account.address}`
+      );
+      const _userData = data.userData;
+      let userDataSocial;
+      try {
+        userDataSocial =
+          wallet.id === "inApp" ? (await getProfiles(wallet))[0] : null;
+      } catch (e) {
+        userDataSocial = null;
+      }
+      if (_userData.isNewUser) {
+        setCreateProfileModal({
+          isOpen: true,
+          loginAdapter: wallet.id,
+          userPreData: {
+            email: (userDataSocial && userDataSocial.details.email) || "",
+            name: "",
+            imageUrl: "",
+          },
+        });
+      }
       setConnected(true); 
       setSigningIn(false);
     }
