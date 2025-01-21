@@ -34,7 +34,7 @@ export const authOptions = {
             userInfo: credentials.userInfo,
             domain: nextAuthUrl.domain,
           };
-          console.log("authData = : ", authData);
+          console.log("authData = : ", nextAuthUrl, authData);
           const { data } = await axios.post(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
             {
