@@ -138,6 +138,7 @@ const authProviderHandlers = {
     } finally {
       // setSigningIn(false);
       console.log("here???");
+      setConnected(true); 
     }
   },
 
