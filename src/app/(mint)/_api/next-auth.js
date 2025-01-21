@@ -23,7 +23,6 @@ export const authOptions = {
       },
       async authorize(credentials) {
         try {
-          console.log("credentials = : ", credentials);
           const nextAuthUrl = new URL(
             process.env.NEXTAUTH_URL || process.env.VERCEL_URL
           );
@@ -34,7 +33,6 @@ export const authOptions = {
             userInfo: credentials.userInfo,
             domain: nextAuthUrl.domain,
           };
-          console.log("authData = : ", nextAuthUrl, authData);
           const { data } = await axios.post(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
             {
