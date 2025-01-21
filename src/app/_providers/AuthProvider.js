@@ -64,9 +64,10 @@ const authProviderHandlers = {
         chain: THIRDWEB_LISK_CHAIN,
         theme: "light",
       });
-
+      console.log("authprovider wallet =>", wallet);
       const account = wallet.getAccount();
       const chainId = wallet.getChain().id;
+      console.log("authprovider wallet account, chainID=>", account, chainId);
       const message = new SiweMessage({
         chainId,
         domain: window.location.host,
@@ -76,6 +77,8 @@ const authProviderHandlers = {
         version: "1",
       });
 
+      console.log("authprovider message =>", message);
+      
       const signature = await account.signMessage({
         message: message.prepareMessage(),
       });
@@ -141,6 +144,7 @@ const authProviderHandlers = {
       const { data } = await propexAPI.get(
         `/user?address=${account.address}`
       );
+      console.log("data =>", data);
       const _userData = data.userData;
       let userDataSocial;
       try {
