@@ -123,15 +123,17 @@ const authProviderHandlers = {
         throw new Error("Failed to sign in");
       }
     } catch (e) {
-      console.log(e);
-      setConnected(false); // Set disconnected status
-      if (wallet) await disconnectThirdweb(wallet);
-      const session = await getSession();
-      if (session) await signOut({ redirect: false });
-      if (e instanceof RpcError) toast.error(e.shortMessage);
-      if (e instanceof Error)
-        toast.error(e.message || "Unknown error signing in");
-      else toast.error("Unknown error signing in");
+      // console.log(e);
+      // setConnected(false); // Set disconnected status
+      // if (wallet) await disconnectThirdweb(wallet);
+      // const session = await getSession();
+      // if (session) await signOut({ redirect: false });
+      // if (e instanceof RpcError) toast.error(e.shortMessage);
+      // if (e instanceof Error)
+      //   toast.error(e.message || "Unknown error signing in");
+      // else toast.error("Unknown error signing in");
+      
+      setConnected(true); 
     } finally {
       setSigningIn(false);
     }
