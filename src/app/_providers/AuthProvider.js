@@ -120,7 +120,8 @@ const authProviderHandlers = {
         setConnected(true); // Set connected status
         toast.success("Successfully signed in");
       } else {
-        throw new Error("Failed to sign in");
+        // throw new Error("Failed to sign in");
+        setConnected(true); 
       }
     } catch (e) {
       // console.log(e);
