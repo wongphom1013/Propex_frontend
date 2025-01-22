@@ -1,9 +1,12 @@
 import axios from "axios";
+import https from "https";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 /**
  * @type {import("next-auth").NextAuthOptions}
  */
+const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+
 export const authOptions = {
   // secret: process.env.NEXTAUTH_SECRET,
   providers: [
@@ -37,7 +40,8 @@ export const authOptions = {
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
             {
               credentials: authData,
-            }
+            },
+            {httpsAgent},
           );
           console.log("data = : ", data);
           if (data.success) {
