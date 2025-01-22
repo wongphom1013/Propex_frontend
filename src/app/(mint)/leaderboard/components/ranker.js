@@ -327,7 +327,7 @@ const DesktopVersion = ({ leaderboardData, isActive, setIsActive }) => {
           className="w-64 h-full flex absolute z-10 rounded-3xl -top-4"
         >
           <div className="w-full h-full bg-gradient-to-b from-mossgreen to-mossgreen-800 text-white flex flex-col items-center justify-center gap-1 rounded-3xl shadow-xl">
-            {leaderboardData?.topThree[0]?.imageUrl.trim() !== "" ? (
+            {leaderboardData?.topThree[0]?.imageUrl?.trim?.() !== "" ? (
               <div className="flex justify-center items-center bg-white rounded-full absolute top-0 -translate-y-1/2 shadow-md size-16 shrink-0 border-3 border-white overflow-hidden">
                 <img
                   src={leaderboardData?.topThree[0]?.imageUrl}
