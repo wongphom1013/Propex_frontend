@@ -63,7 +63,7 @@ const MobileVersion = ({ leaderboardData, isActive, setIsActive }) => {
           className="flex flex-col items-center"
         >
           {/* Profile Picture */}
-          {leaderboardData?.topThree[1]?.imageUrl.trim() !== "" ? (
+          {leaderboardData?.topThree[1]?.imageUrl?.trim?.() !== "" ? (
             <div className="flex justify-center items-center bg-white rounded-full size-16">
               <div className="relative w-full h-full">
                 <img
@@ -115,7 +115,7 @@ const MobileVersion = ({ leaderboardData, isActive, setIsActive }) => {
           className="flex flex-col items-center z-10"
         >
           {/* Profile Picture */}
-          {leaderboardData?.topThree[0]?.imageUrl.trim() !== "" ? (
+          {leaderboardData?.topThree[0]?.imageUrl?.trim?.() !== "" ? (
             <div className="flex justify-center items-center bg-white rounded-full size-16">
               <div className="relative w-full h-full">
                 <img
@@ -167,7 +167,7 @@ const MobileVersion = ({ leaderboardData, isActive, setIsActive }) => {
           className="flex flex-col items-center"
         >
           {/* Profile Picture */}
-          {leaderboardData?.topThree[2]?.imageUrl.trim() !== "" ? (
+          {leaderboardData?.topThree[2]?.imageUrl?.trim?.() !== "" ? (
             <div className="flex justify-center items-center bg-white rounded-full size-16">
               <div className="relative w-full h-full">
                 <img
@@ -229,7 +229,7 @@ const DesktopVersion = ({ leaderboardData, isActive, setIsActive }) => {
             className="w-[40%] h-full bg-gradient-to-b from-lemongrass-300 to-lightgreen flex flex-col items-center justify-center gap-1 rounded-3xl"
           >
             {/* Image and content */}
-            {leaderboardData?.topThree[1]?.imageUrl.trim() !== "" ? (
+            {leaderboardData?.topThree[1]?.imageUrl?.trim?.() !== "" ? (
               <div className="flex justify-center items-center bg-white rounded-full absolute top-0 -translate-y-1/2 shadow-md size-16 shrink-0 border-3 border-white overflow-hidden">
                 <img
                   src={leaderboardData?.topThree[1]?.imageUrl}
@@ -277,7 +277,7 @@ const DesktopVersion = ({ leaderboardData, isActive, setIsActive }) => {
             transition={{ ease: "easeOut", duration: 0.8, delay: 0.2 }}
             className="w-[40%] h-full bg-gradient-to-b from-lemongrass-300 to-lightgreen text-black flex flex-col items-center justify-center gap-1 rounded-3xl"
           >
-            {leaderboardData?.topThree[2]?.imageUrl.trim() !== "" ? (
+            {leaderboardData?.topThree[2]?.imageUrl?.trim?.() !== "" ? (
               <div className="flex justify-center items-center bg-white rounded-full absolute top-0 -translate-y-1/2 shadow-md size-16 shrink-0 border-3 border-white overflow-hidden">
                 <img
                   src={leaderboardData?.topThree[2]?.imageUrl}
