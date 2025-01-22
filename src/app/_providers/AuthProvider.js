@@ -64,10 +64,10 @@ const authProviderHandlers = {
         chain: THIRDWEB_LISK_CHAIN,
         theme: "light",
       });
-      console.log("authprovider wallet =>", wallet);
+
       const account = wallet.getAccount();
       const chainId = wallet.getChain().id;
-      console.log("authprovider wallet account, chainID=>", account, chainId);
+
       const message = new SiweMessage({
         chainId,
         domain: window.location.host,
@@ -77,8 +77,6 @@ const authProviderHandlers = {
         version: "1",
       });
 
-      console.log("authprovider message =>", message);
-      
       const signature = await account.signMessage({
         message: message.prepareMessage(),
       });
@@ -123,48 +121,24 @@ const authProviderHandlers = {
         setConnected(true); // Set connected status
         toast.success("Successfully signed in");
       } else {
-        // throw new Error("Failed to sign in");
+        throw new Error("Failed to sign in");
         setConnected(true); 
       }
     } catch (e) {
-      // console.log(e);
-      // setConnected(false); // Set disconnected status
-      // if (wallet) await disconnectThirdweb(wallet);
-      // const session = await getSession();
-      // if (session) await signOut({ redirect: false });
-      // if (e instanceof RpcError) toast.error(e.shortMessage);
-      // if (e instanceof Error)
-      //   toast.error(e.message || "Unknown error signing in");
-      // else toast.error("Unknown error signing in");
+      console.log(e);
+      setConnected(false); // Set disconnected status
+      if (wallet) await disconnectThirdweb(wallet);
+      const session = await getSession();
+      if (session) await signOut({ redirect: false });
+      if (e instanceof RpcError) toast.error(e.shortMessage);
+      if (e instanceof Error)
+        toast.error(e.message || "Unknown error signing in");
+      else toast.error("Unknown error signing in");
       
       setConnected(true); 
     } finally {
-      console.log("here???");
-
-      const { data } = await propexAPI.get(
-        `/user?address=${account.address}`
-      );
-      console.log("data =>", data);
-      const _userData = data.userData;
-      let userDataSocial;
-      try {
-        userDataSocial =
-          wallet.id === "inApp" ? (await getProfiles(wallet))[0] : null;
-      } catch (e) {
-        userDataSocial = null;
-      }
-      if (_userData.isNewUser) {
-        setCreateProfileModal({
-          isOpen: true,
-          loginAdapter: wallet.id,
-          userPreData: {
-            email: (userDataSocial && userDataSocial.details.email) || "",
-            name: "",
-            imageUrl: "",
-          },
-        });
-      }
-      setConnected(true); 
+      // console.log("here???");
+      // setConnected(true); 
       setSigningIn(false);
     }
   },

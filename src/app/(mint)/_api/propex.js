@@ -1,9 +1,12 @@
 import axios from "axios";
+import https from "https";
+
 import { getSession, signOut } from "next-auth/react";
 
 const apiWithSession = () => {
   const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+    httpsAgent:new https.Agent({rejectUnauthorized : false}),
   });
   let lastSession = null;
   instance.interceptors.request.use(async (req) => {
