@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
 import crypto from "crypto-js";
-
+import https from "https";
 const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 const CLOUD_API_KEY = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_API_KEY;
 const CLOUD_API_SECRET = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_API_SECRET;
@@ -114,7 +114,8 @@ export async function DELETE(request) {
     // Make the delete request to Cloudinary
     const response = await axios.post(
       `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/destroy`,
-      formData
+      formData,
+      new https.Agent({ rejectUnauthorized: false })
     );
 
     return NextResponse.json({ data: response.data });

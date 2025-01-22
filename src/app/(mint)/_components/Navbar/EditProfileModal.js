@@ -17,7 +17,7 @@ import { useRefreshTrigger } from "../../_providers/RefreshProvider";
 import { propexAPI } from "../../_api/propex";
 import { useActiveAccount } from "thirdweb/react";
 import { Skeleton } from "@nextui-org/react";
-
+import https from "https";
 const MAX_FILE_SIZE = 1.5 * 1024 * 1024; // 1.5 MB
 
 export const editProfileModalAtom = atom({
@@ -65,7 +65,7 @@ export default function EditProfileModal() {
       );
       const { data } = await axios.post(
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME_NEW}/image/upload`,
-        formData
+        formData, new https.Agent({ rejectUnauthorized: false })
       );
 
       return data?.secure_url;
@@ -147,7 +147,7 @@ export default function EditProfileModal() {
         axios
           .get(profileModal.userPreData.imageUrl, {
             responseType: "blob",
-          })
+          }, new https.Agent({ rejectUnauthorized: false }))
           .then((response) => {
             const file = new File([response.data], `pp-${nanoid(8)}.jpg`, {
               type: response.data.type,

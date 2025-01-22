@@ -20,7 +20,7 @@ import useSWR, { preload } from "swr";
 import { Skeleton } from "@nextui-org/react";
 import { getProfiles } from "thirdweb/wallets";
 import { isDemoModeAtom } from "../../_store/demo-store";
-
+import https from "https";
 const MAX_FILE_SIZE = 1.5 * 1024 * 1024; // 1.5 MB
 
 export const createProfileModalAtom = atom({
@@ -81,7 +81,7 @@ export default function CreateProfileModal() {
       );
       const { data } = await axios.post(
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME_NEW}/image/upload`,
-        formData
+        formData, new https.Agent({ rejectUnauthorized: false })
       );
 
       return data?.secure_url;
@@ -180,7 +180,7 @@ export default function CreateProfileModal() {
         axios
           .get(profileModal.userPreData.imageUrl, {
             responseType: "blob",
-          })
+          }, new https.Agent({ rejectUnauthorized: false }))
           .then((response) => {
             const file = new File([response.data], `pp-${nanoid(8)}.jpg`, {
               type: response.data.type,

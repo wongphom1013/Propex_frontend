@@ -42,7 +42,7 @@ import { useSearchParams } from "next/navigation";
 import { useGeolocation } from "@uidotdev/usehooks";
 import axios from "axios";
 import { electroneum } from "viem/chains";
-
+import https from "https";
 export default function SelectLocation({ isTransitioning }) {
   return (
     <div className="w-full flex flex-col items-center h-full">
@@ -240,7 +240,8 @@ function MapCard({ isTransitioning }) {
     try {
       setRecommendedLoading(true);
       const { data } = await axios.get(
-        `${backendUrl}/places/recommended?latitude=${lat}&longitude=${lng}`
+        `${backendUrl}/places/recommended?latitude=${lat}&longitude=${lng}`,
+        new https.Agent({ rejectUnauthorized: false })
       );
 
       if (data.recommendedPlaces) {
